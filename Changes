@@ -1,0 +1,23 @@
+Revision history for 'accessors' Perl pragma
+--------------------------------------------
+
+All changes by Steve Purkis, unless otherwise noted.
+
+0.02
+    +	made method-chaining accessors the default.
+    *	created accessors::classic and accessors::chained, and killed the
+	'use accessors qw( foo :style )' syntax.
+    +	now compat with perl 5.6+ [reported by Michael Schwern]
+    +	tests no longer noisy (no blib or benchmark diagnostics)
+	[reported by Michael Schwern]
+    +	using closures + anon sub instead of eval [reported by Michael Schwern]
+    +	moved generation methods into simple subs & optimized (smaller pad to
+	restore, results in faster, well factored code)
+    +	added InvalidNames to catch things like AUTOLOAD & DESTROY
+	[reported by James Duncan]
+    +	s/cascading/chaining/ [reported by James Duncan]
+    +	refactored test suite, added benchmarks for classic accessors.
+    +	updated docs
+
+0.01
+    +	created Fri Sep 12 2003 after a conversation with Michael Schwern.
