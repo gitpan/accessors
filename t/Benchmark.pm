@@ -2,7 +2,7 @@ package t::Benchmark;
 
 use strict;
 
-use Benchmark qw( timestr countit );
+use Benchmark qw( timethis timestr countit );
 use Test::More;
 
 use base qw( Exporter );
@@ -10,9 +10,22 @@ use base qw( Exporter );
 our @EXPORT = qw( &test_generation_performance &test_set_get_performance );
 
 sub test_generation_performance {
-    my $generator_code = shift;
+    my $accessor_class = shift;
 
-    my $r1 = countit( -1, $generator_code );
+    # generate ~100k accessor names to use up-front (to avoid skewing tests)
+    # then loop through the list & time how long it takes to generate 'em
+    my $i    = 0;
+    my @list = ('aa' .. 'aaaa');
+
+    # run the test
+    my $r1;
+    {
+	package GeneratedAccessors;
+	my $generator_code = sub {
+	    import $accessor_class ($list[$i++]);
+	};
+	$r1 = Benchmark::timethis( scalar(@list), $generator_code );
+    }
     die "accessor generation benchmark failed!" unless $r1;
 
     print "# accessor generation: ", timestr( $r1 ), "\n";
@@ -46,8 +59,8 @@ sub test_set_get_performance {
 	pass( "set/get generated is *faster* than optimized ($percent%)" );
     } else {
 	$percent = -$percent;
-	cmp_ok( $percent, '<=', 15.0,
-		"set/get generated is < 15% slower than optimized ($percent%)" );
+	cmp_ok( $percent, '<=', 30.0,
+		"set/get generated is < 30% slower than optimized ($percent%)" );
     }
 }
 

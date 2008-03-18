@@ -4,11 +4,10 @@
 ## Tests for invalid accessors
 ##
 
-#use blib;
 use strict;
 use warnings;
 
-use Test::More tests => 5;
+use Test::More tests => 9;
 use Carp;
 
 use_ok( "accessors" );
@@ -17,5 +16,5 @@ use_ok( "accessors" );
 do {
     eval { import accessors $_ };
     ok( $@, "invalid accessor - $_" );
-} for (qw( DESTROY AUTOLOAD 1notasub @$%*&^';\/ ));
+} for (qw( BEGIN CHECK INIT END DESTROY AUTOLOAD 1notasub @$%*&^';\/ ));
 

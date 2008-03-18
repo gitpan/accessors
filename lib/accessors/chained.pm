@@ -24,8 +24,8 @@ use strict;
 use warnings::register;
 use base qw( accessors );
 
-our $VERSION  = ((require accessors), $accessors::VERSION)[1];
-our $REVISION = (split(/ /, ' $Revision: 1.2 $ '))[2];
+our $VERSION  = '1.00';
+our $REVISION = (split(/ /, ' $Revision: 1.3 $ '))[2];
 
 # inherit everything for now.
 
@@ -46,7 +46,7 @@ See L<accessors> for documentation.
 
 =head1 AUTHOR
 
-Steve Purkis <spurkis@epn.nu>
+Steve Purkis <spurkis@cpan.org>
 
 =head1 SEE ALSO
 

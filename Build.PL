@@ -42,7 +42,7 @@ __END__
 
 =head1 AUTHOR
 
-Steve Purkis <spurkis@epn.nu>
+Steve Purkis <spurkis@cpan.org>
 
 =cut
 

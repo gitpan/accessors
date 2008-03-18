@@ -1,23 +1,29 @@
 --- #YAML:1.0
 name: accessors
-version: 0.02
+version: 1.00
+author:
+  - Steve Purkis <spurkis@cpan.org>
+abstract: create accessor methods in caller's package.
 license: perl
-distribution_type: module
 requires:
   perl: 5.6.0
-recommends: {}
 build_requires:
   Module::Build: 0.20
   Test::More: 0.01
-conflicts: {}
 provides:
   accessors:
     file: lib/accessors.pm
-    version: 0.02
+    version: 1.00
   accessors::chained:
     file: lib/accessors/chained.pm
-    version: 0.02
+    version: 1.00
   accessors::classic:
     file: lib/accessors/classic.pm
-    version: 0.02
-generated_by: Module::Build version 0.20
+    version: 1.00
+  accessors::ro:
+    file: lib/accessors/ro.pm
+    version: 1.00
+  accessors::rw:
+    file: lib/accessors/rw.pm
+    version: 1.00
+generated_by: Module::Build version 0.25

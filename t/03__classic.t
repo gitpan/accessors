@@ -4,7 +4,6 @@
 ## Tests for accessors::classic
 ##
 
-#use blib;
 use strict;
 use warnings;
 
@@ -13,7 +12,7 @@ use Carp;
 
 BEGIN { use_ok( "accessors::classic" ) };
 
-my $time = shift || 1;
+my $time = shift || 0.5;
 
 my $foo = bless {}, 'Foo';
 can_ok( $foo, 'bar' );
@@ -29,13 +28,7 @@ SKIP: {
     eval "use t::Benchmark";
     die $@ if $@;
 
-    my $i    = 0;
-    my @list = ('a' .. 'aaaa');
-    test_generation_performance
-      (
-       sub { package Blah;
-	     import accessors::classic ($list[$i++ % @list]) }
-      );
+    test_generation_performance( 'accessors::classic' );
 
     test_set_get_performance( time      => $time,
 			      generated => bless( {}, 'Generated' ),

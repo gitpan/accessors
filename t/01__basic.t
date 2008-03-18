@@ -4,7 +4,6 @@
 ## Tests for accessors.pm
 ##
 
-#use blib;
 use strict;
 use warnings;
 
