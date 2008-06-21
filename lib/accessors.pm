@@ -26,8 +26,8 @@ use 5.006;
 use strict;
 use warnings::register;
 
-our $VERSION  = '1.00';
-our $REVISION = (split(/ /, ' $Revision: 1.21 $ '))[2];
+our $VERSION  = '1.01';
+our $REVISION = (split(/ /, ' $Revision: 1.22 $ '))[2];
 
 our $Debug        = 0;
 our $ExportLevel  = 0;
